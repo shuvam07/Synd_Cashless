@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ATM Screen View</title>
+	<script src="../static/lib/jquery/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+</head>
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static '/css/style.css'%}">
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css'%}">
+<body style="text-align: center">
+	<h1>Welcome to Syndicate Bank</h1>
+	<p><p><br>
+	<div class="container">
+  <div class="row">
+     <button class="btn btn-info" id="grid cardless">
+     	<a class="nav-link" href="{% url 'atm:cardless' %}" >
+     	Cardless Transaction</a>
+     </button>
+    <button class="btn btn-info" id="grid card">
+    	<a class="nav-link" href="{% url 'atm:card' %}">
+    Card transaction</a>
+	</button>
+  </div>
+</div>
+</body>
+</html>

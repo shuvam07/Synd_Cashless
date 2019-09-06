@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ATM Screen View</title>
+	<!-- <script src="../static/lib/jquery/jquery.min.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+</head>
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static '/css/style.css'%}">
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css'%}">
+<body style="text-align: center">
+	<h1>Welcome to Syndicate Bank</h1>
+	<p><p><br>
+<div class="container">
+  <div class="row">
+    <div class="col"><button type="button" class="btn btn-primary">Balance Enquiry</button></div>
+    <div class="col"><button type="button" class="btn btn-primary">Fast Cash</button></div>
+    <div class="w-100"></div>
+    <br>
+    <div class="col"><button type="button" class="btn btn-primary">Mini Statement</button></div>
+    <div class="col"><button type="button" class="btn btn-primary">Cash Withdrawal</button></div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col"><button type="button" class="btn btn-primary">Services</button></div>
+    <div class="col"><button type="button" class="btn btn-primary">Pin Change</button></div>
+    <div class="w-100"></div>
+    <br>
+    <div class="col"><button type="button" class="btn btn-primary">Bill Payments</button></div>
+    <div class="col"><button type="button" class="btn btn-primary">Funds Transfer</button></div>
+  </div>
+</div>
+</body>
+</html>
