@@ -15,8 +15,9 @@ def sendSmsToPhone(phone, otp):
 	auth_token  = "a0664845c9fa0e0dc0340a663a2c2159"
 	client = Client(account_sid, auth_token)
 	to = "+91"+phone
+	msg = "Your OTP for cardless transaction is "+otp+". It will be valid for 10 minutes. Do not disclose this to anyone."
 	message = client.messages.create(
-	    body="Your otp is "+otp,
+	    body=msg,
 	    to=to,
 	    from_="+18173859700"
 	    )
@@ -46,7 +47,6 @@ def card(request):
 	return redirect(reverse('atm:view_screen'))
 
 def verifyOTP(request):
-	return render(request,'card.html')
 	print('verifyOTP')
 	phone = request.POST['phone']
 	otp = request.POST['otp']
@@ -60,7 +60,6 @@ def verifyOTP(request):
 		return HttpResponse("Invalid OTP")
 
 def checkValidAndOTP(request):
-	return HttpResponse("True")
 	print ("hello world")
 	phone = request.POST['phone']
 	pin = request.POST['pin']

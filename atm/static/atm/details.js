@@ -15,8 +15,9 @@ function checkValidAndOTP(){
             if (status){
                 $('.form-control')[0].disabled = true
                 $('.form-control')[1].disabled = true
+                $("#btnSubmit").attr("disabled",true)
                 $('.container').append('<input id="otp" type="text" class="form-control" name="otp" placeholder="Enter your 6 digit OTP">')
-                $('.container').append('<button onClick="verifyOTP()" type="button" class="btn btn-primary" >Submit OTP</button>')
+                $('.container').append('<button id="btnOTP" onClick="verifyOTP()" type="button" class="btn btn-primary" >Submit OTP</button>')
             }
             else{
                 alert("Phone number does not exits or invalid pin")
@@ -38,9 +39,12 @@ function verifyOTP(){
             otp: otp,
             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
         },
+        before : function(){
+            $('#otp').attr("disabled",true)
+            $('#btnOTP').attr("disabled",true)
+        },
         success : function(status) {
-            console.log(status)
-            
+            window.location.replace("http://localhost:9000/atm/card/");
         },
     })
 }
