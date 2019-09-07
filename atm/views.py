@@ -10,43 +10,17 @@ import math, random
 
 # Create your views here.
 def sendSmsToPhone(phone, otp):
-	
-	
-
-	# account_sid = "AC9e2ec3e819222baac7d6d520cdf79897"
-	# auth_token  = "a0664845c9fa0e0dc0340a663a2c2159"
-	# client = Client(account_sid, auth_token)
-	# to = "+919476212584"
-	# message = client.messages.create(
-	#     body="Your otp is "+otp,
-	#     to=to,
-	#     from_="+18173859700"
-	#     )
-	# print (message.sid)
-
-	# url = "https://www.fast2sms.com/dev/bulk"
-	# payload = "sender_id=FSTSMS&message=goodMorning&language=english&route=p&numbers=9476212584"
-	# headers = {
-	# 'authorization': "wKxiMZ6zATtErGc7HFWadSYLX0oOCmleBNq9b23U5JyhP4ug1fJCv9zUMQysPkhwqTZ6IH5clp2F3N7X",
-	# 'Content-Type': "application/x-www-form-urlencoded",
-	# 'Cache-Control': "no-cache",
-	# }
-	# response = requests.request("POST", url, data=payload, headers=headers)
-	# print(response.text)
-
-	import requests
-
-	url = "https://www.fast2sms.com/dev/bulk"
-
-	querystring = {"authorization":"wKxiMZ6zATtErGc7HFWadSYLX0oOCmleBNq9b23U5JyhP4ug1fJCv9zUMQysPkhwqTZ6IH5clp2F3N7X","sender_id":"FSTSMS","message":"This is test message","language":"english","route":"p","numbers":"9476212584"}
-
-	headers = {
-	    'cache-control': "no-cache"
-	}
-
-	response = requests.request("GET", url, headers=headers, params=querystring)
-
-	print(response.text)
+	# // https://www.twilio.com/console/phone-numbers/verified
+	account_sid = "AC9e2ec3e819222baac7d6d520cdf79897"
+	auth_token  = "a0664845c9fa0e0dc0340a663a2c2159"
+	client = Client(account_sid, auth_token)
+	to = "+91"+phone
+	message = client.messages.create(
+	    body="Your otp is "+otp,
+	    to=to,
+	    from_="+18173859700"
+	    )
+	print (to, message.sid)
 
 def generateOTP() :  
     digits = "0123456789"
@@ -72,6 +46,7 @@ def card(request):
 	return redirect(reverse('atm:view_screen'))
 
 def verifyOTP(request):
+	return render(request,'card.html')
 	print('verifyOTP')
 	phone = request.POST['phone']
 	otp = request.POST['otp']
@@ -80,11 +55,13 @@ def verifyOTP(request):
 	except ObjectDoesNotExist:
 		return HttpResponse("False")
 	if det.otp == otp: 
-		return redirect(reverse('atm:view_screen'))
+		return render(request,'card.html')
 	else:
 		return HttpResponse("Invalid OTP")
 
 def checkValidAndOTP(request):
+	return HttpResponse("True")
+	print ("hello world")
 	phone = request.POST['phone']
 	pin = request.POST['pin']
 	try:
